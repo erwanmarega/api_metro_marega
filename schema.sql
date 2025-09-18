@@ -9,3 +9,8 @@ CREATE TABLE stations (
   last_metro TIME NOT NULL
 );
 
+CREATE TABLE config (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL
+);
+
