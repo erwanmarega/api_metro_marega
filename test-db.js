@@ -5,9 +5,9 @@ async function main() {
     const res = await pool.query('SELECT * FROM stations');
     console.log(res.rows);
   } catch (err) {
-    console.error('Erreur de connexion DB:', err);
+    console.error('Erreur de connexion base de données:', err);
   } finally {
-    pool.end();
+   await pool.end();
   }
 }
 
