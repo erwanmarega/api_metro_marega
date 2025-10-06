@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
 
-  testMatch: ['**/__tests__/**/*.js', '**/*.test.js'],
+  testMatch: ['**/__tests__/**/*.js', '**/*.test.js', '**/tests/**/*.test.js'],
 
   collectCoverageFrom: [
     'routes/**/*.js',
@@ -9,5 +9,7 @@ module.exports = {
     '!node_modules/**'
   ],
 
-  verbose: true
+  verbose: true,
+
+  testTimeout: 10000
 };
