@@ -26,15 +26,15 @@ test:
   services:
     - postgres:15
   variables:
-    POSTGRES_DB: test_db
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
+    POSTGRES_DB: metro
+    POSTGRES_USER: metro
+    POSTGRES_PASSWORD: metro
     POSTGRES_HOST_AUTH_METHOD: trust
     PGHOST: postgres
     PGPORT: 5432
-    PGUSER: postgres
-    PGPASSWORD: postgres
-    PGDATABASE: test_db
+    PGUSER: metro
+    PGPASSWORD: metro
+    PGDATABASE: metro
   dependencies:
     - install_dependencies
   script:
