@@ -65,3 +65,13 @@ security:npm-audit:
   script:
     - npm audit --audit-level=moderate
   allow_failure: true
+
+security:trivy:
+  stage: security
+  image:
+    name : aquasec/trivy:latest
+    entrypoint: [""]
+  script:
+    - trivy image --severity HIGH,CRITICAL $CI_REGISTRY_IMAGE:latest
+  only:
+    - main
