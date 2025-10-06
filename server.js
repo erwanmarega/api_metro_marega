@@ -73,3 +73,6 @@ app.listen(PORT, () => {
 app.get("/api/hello", (req, res) => {
     res.json({ message: "Hello Swagger!" });
   });
+
+// Export de l'app pour les tests
+module.exports = app;
