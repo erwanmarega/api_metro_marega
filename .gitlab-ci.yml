@@ -58,7 +58,6 @@ build:
     - docker push $IMAGE_LATEST
   only:
     - main
-    - Phase-1-Database
 
 npm-audit:
   stage: security
@@ -70,7 +69,6 @@ npm-audit:
   allow_failure: true
   only:
     - main
-    - Phase-1-Database
 
 docker-scan:
   stage: security
@@ -90,4 +88,3 @@ docker-scan:
   allow_failure: true
   only:
     - main
-    - Phase-1-Database
