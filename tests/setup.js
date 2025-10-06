@@ -1,11 +1,12 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'metro',
-  host: 'localhost',
-  database: 'metro_test',
-  password: 'metro',
-  port: 5432,
+  user: process.env.PGUSER || 'metro',
+  host: process.env.PGHOST || 'localhost',
+  database: process.env.PGDATABASE || 'metro_test',
+  password: process.env.PGPASSWORD || 'metro',
+  port: Number(process.env.PGPORT) || 5432,
 });
 
 async function setupTestDB() {

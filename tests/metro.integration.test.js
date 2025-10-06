@@ -1,9 +1,6 @@
 const request = require('supertest');
 const { setupTestDB, teardownTestDB } = require('./setup');
 
-process.env.PGDATABASE = 'metro_test';
-process.env.PGHOST = 'localhost';
-
 const app = require('../server');
 
 describe('Tests d\'intégration - Routes /last-metro (avec vraie DB)', () => {
