@@ -1,0 +1,22 @@
+services:
+  web:
+    container_name: api_metro_marega_green
+    image: registry.gitlab.com/erwanmarega/api_metro_marega:1.1
+    env_file:
+      - .env.green
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+    networks:
+      - production-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  production-network:
+    external: true
+    name: production-network

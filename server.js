@@ -12,7 +12,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 
 const SwaggerOptions = {
     definition: {
-        openapi: "3.0.0", 
+        openapi: "3.0.0",
         info: {
           title: "API Documentation",
           version: "1.0.0",
@@ -20,7 +20,7 @@ const SwaggerOptions = {
         },
         servers: [
           {
-            url: "http://localhost:3000", 
+            url: process.env.API_URL || `http://localhost:${PORT}`,
           },
         ],
       },
@@ -102,5 +102,4 @@ app.get("/api/hello", (req, res) => {
     res.json({ message: "Hello Swagger!" });
   });
 
-// Export de l'app pour les tests
 module.exports = app;
