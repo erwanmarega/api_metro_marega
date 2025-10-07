@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db-production:
+    image: postgres:15
+    container_name: metro_db_production
+    restart: always
+    environment:
+      - POSTGRES_USER=metro
+      - POSTGRES_PASSWORD=metro_prod_2025
+      - POSTGRES_DB=metro
+    ports:
+      - "5434:5432"
+    volumes:
+      - production_db_data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    networks:
+      - production-network
+
+networks:
+  production-network:
+    name: production-network
+    driver: bridge
+
+volumes:
+  production_db_data:
