@@ -1,13 +1,10 @@
 services:
     api:
         image: registry.gitlab.com/erwanmarega/api_metro_marega:latest
+        env_file:
+            - .env.staging
         environment:
             - NODE_ENV=staging
-            - PGHOST=host.docker.internal
-            - PGDATABASE=metro
-            - PGUSER=metro
-            - PGPASSWORD=db_password
-            - PGPORT=5432
         ports:
             - "3001:3000"
         restart: unless-stopped
