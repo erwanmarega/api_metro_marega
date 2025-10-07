@@ -46,6 +46,34 @@ app.get('/', (req, res) => {
     }
 );
 
+/**
+ * @swagger
+ * /health:
+ *   get:
+ *     summary: Health check de l'API
+ *     tags: [Health]
+ *     responses:
+ *       200:
+ *         description: L'API fonctionne correctement
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: ok
+ *                 timestamp:
+ *                   type: string
+ *                   example: "2025-10-07T10:30:00.000Z"
+ */
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     }

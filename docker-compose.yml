@@ -1,12 +1,13 @@
+version: "3.8"
+
 services:
   db:
-    image: postgres:16-alpine
-    container_name: metro_db
+    image: postgres:15
     restart: always
     environment:
-      POSTGRES_USER: ${PGUSER}
-      POSTGRES_PASSWORD: ${PGPASSWORD}
-      POSTGRES_DB: ${PGDATABASE}
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - POSTGRES_DB=${PGDATABASE}
     ports:
       - "5432:5432"
     volumes:
@@ -15,27 +16,23 @@ services:
       - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
 
   api:
-    build: .
-    container_name: metro_api
+    build: ./
     restart: always
-    env_file: .env
     ports:
       - "3000:3000"
     depends_on:
-      db:
-        condition: service_started
+      - db
 
   swagger:
     image: swaggerapi/swagger-ui:latest
     environment:
-      - SWAGGER_JSON=/openapi/openapi.yaml
+      - SWAGGER_JSON=/usr/share/nginx/html/openapi/openapi.yaml
     volumes:
       - ./openapi:/usr/share/nginx/html/openapi:ro
     ports:
       - "8080:8080"
     depends_on:
-      api:
-        condition: service_started
+      - api
 
 volumes:
   db_data:
