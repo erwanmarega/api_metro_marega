@@ -1,0 +1,8 @@
+services:
+    api:
+        image: registry.gitlab.com/erwanmarega/api_metro_marega:latest
+        environment:
+            - NODE_ENV=staging
+            - PGHOST=postgres-staging
+            - PGDATABASE=metro
+        restart: unless-stopped
