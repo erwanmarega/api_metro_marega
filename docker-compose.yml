@@ -18,6 +18,12 @@ services:
   api:
     build: ./
     restart: always
+    environment:
+      - PGHOST=db
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGDATABASE=${PGDATABASE}
+      - PGPORT=5432
     ports:
       - "3000:3000"
     depends_on:
