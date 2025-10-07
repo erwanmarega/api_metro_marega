@@ -70,7 +70,9 @@ app.get('/', (req, res) => {
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    environment: process.env.ENVIRONMENT || 'unknown',
+    version: process.env.VERSION || 'unknown'
   });
 });
 
